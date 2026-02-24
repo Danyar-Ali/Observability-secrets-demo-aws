@@ -1,0 +1,25 @@
+services:
+  app:
+    build: ./app
+    environment:
+      - AWS_REGION=eu-central-1
+      - SECRET_ID=${SECRET_ID}
+      - PORT=8080
+    ports:
+      - "8080:8080"
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    depends_on:
+      - app
+
+  grafana:
+    image: grafana/grafana:latest
+    ports:
+      - "3000:3000"
+    depends_on:
+      - prometheus

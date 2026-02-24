@@ -1,0 +1,10 @@
+{
+  "name": "demo-api",
+  "type": "module",
+  "version": "1.0.0",
+  "dependencies": {
+    "@aws-sdk/client-secrets-manager": "^3.0.0",
+    "express": "^4.19.2",
+    "prom-client": "^15.1.3"
+  }
+}
